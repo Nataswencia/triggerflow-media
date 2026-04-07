@@ -508,5 +508,29 @@
     "slot": "promo_after",
     "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-10_promo_after.mp4",
     "type": "video"
+  },
+  {
+    "date": "2026-04-08",
+    "slot": "deviz",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-08_deviz.mp4",
+    "type": "video"
+  },
+  {
+    "date": "2026-04-09",
+    "slot": "deviz",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-09_deviz.mp4",
+    "type": "video"
+  },
+  {
+    "date": "2026-04-10",
+    "slot": "deviz",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-10_deviz.mp4",
+    "type": "video"
+  },
+  {
+    "date": "2026-04-11",
+    "slot": "deviz",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-11_deviz.mp4",
+    "type": "video"
   }
 ]
