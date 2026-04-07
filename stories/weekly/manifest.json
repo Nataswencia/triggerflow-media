@@ -484,5 +484,29 @@
     "slot": "evening_4",
     "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-11_evening_4.mp4",
     "type": "video"
+  },
+  {
+    "date": "2026-04-08",
+    "slot": "promo_before",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-08_promo_before.mp4",
+    "type": "video"
+  },
+  {
+    "date": "2026-04-08",
+    "slot": "promo_after",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-08_promo_after.mp4",
+    "type": "video"
+  },
+  {
+    "date": "2026-04-10",
+    "slot": "promo_before",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-10_promo_before.mp4",
+    "type": "video"
+  },
+  {
+    "date": "2026-04-10",
+    "slot": "promo_after",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-10_promo_after.mp4",
+    "type": "video"
   }
 ]
