@@ -438,6 +438,54 @@
     "type": "video"
   },
   {
+    "date": "2026-04-08",
+    "slot": "promo_before",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-08_promo_before.mp4",
+    "type": "video"
+  },
+  {
+    "date": "2026-04-08",
+    "slot": "promo_after",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-08_promo_after.mp4",
+    "type": "video"
+  },
+  {
+    "date": "2026-04-10",
+    "slot": "promo_before",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-10_promo_before.mp4",
+    "type": "video"
+  },
+  {
+    "date": "2026-04-10",
+    "slot": "promo_after",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-10_promo_after.mp4",
+    "type": "video"
+  },
+  {
+    "date": "2026-04-08",
+    "slot": "deviz",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-08_deviz.mp4",
+    "type": "video"
+  },
+  {
+    "date": "2026-04-09",
+    "slot": "deviz",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-09_deviz.mp4",
+    "type": "video"
+  },
+  {
+    "date": "2026-04-10",
+    "slot": "deviz",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-10_deviz.mp4",
+    "type": "video"
+  },
+  {
+    "date": "2026-04-11",
+    "slot": "deviz",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-11_deviz.mp4",
+    "type": "video"
+  },
+  {
     "date": "2026-04-11",
     "slot": "morning_1",
     "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-11_morning_1.mp4",
@@ -486,51 +534,21 @@
     "type": "video"
   },
   {
-    "date": "2026-04-08",
-    "slot": "promo_before",
-    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-08_promo_before.mp4",
+    "date": "2026-04-12",
+    "slot": "morning_1",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-12_morning_1.mp4",
     "type": "video"
   },
   {
-    "date": "2026-04-08",
-    "slot": "promo_after",
-    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-08_promo_after.mp4",
+    "date": "2026-04-12",
+    "slot": "morning_2",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-12_morning_2.mp4",
     "type": "video"
   },
   {
-    "date": "2026-04-10",
-    "slot": "promo_before",
-    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-10_promo_before.mp4",
-    "type": "video"
-  },
-  {
-    "date": "2026-04-10",
-    "slot": "promo_after",
-    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-10_promo_after.mp4",
-    "type": "video"
-  },
-  {
-    "date": "2026-04-08",
-    "slot": "deviz",
-    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-08_deviz.mp4",
-    "type": "video"
-  },
-  {
-    "date": "2026-04-09",
-    "slot": "deviz",
-    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-09_deviz.mp4",
-    "type": "video"
-  },
-  {
-    "date": "2026-04-10",
-    "slot": "deviz",
-    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-10_deviz.mp4",
-    "type": "video"
-  },
-  {
-    "date": "2026-04-11",
-    "slot": "deviz",
-    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-11_deviz.mp4",
+    "date": "2026-04-12",
+    "slot": "morning_3",
+    "url": "https://nataswencia.github.io/triggerflow-media/stories/weekly/2026-04-12_morning_3.mp4",
     "type": "video"
   }
 ]
