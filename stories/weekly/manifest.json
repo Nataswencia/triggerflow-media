@@ -553,6 +553,16 @@
   },
   {
     "date": "2026-04-13",
+    "slot": "announce",
+    "file": "2026-04-13_announce.mp4"
+  },
+  {
+    "date": "2026-04-13",
+    "slot": "deviz",
+    "file": "2026-04-13_deviz.mp4"
+  },
+  {
+    "date": "2026-04-13",
     "slot": "evening_1",
     "file": "2026-04-13_evening_1.mp4"
   },
@@ -573,6 +583,21 @@
   },
   {
     "date": "2026-04-13",
+    "slot": "fb_announce",
+    "file": "2026-04-13_fb_announce.mp4"
+  },
+  {
+    "date": "2026-04-13",
+    "slot": "fb_remind",
+    "file": "2026-04-13_fb_remind.mp4"
+  },
+  {
+    "date": "2026-04-13",
+    "slot": "fb_warmup",
+    "file": "2026-04-13_fb_warmup.mp4"
+  },
+  {
+    "date": "2026-04-13",
     "slot": "morning_1",
     "file": "2026-04-13_morning_1.mp4"
   },
@@ -590,5 +615,40 @@
     "date": "2026-04-13",
     "slot": "morning_4",
     "file": "2026-04-13_morning_4.mp4"
+  },
+  {
+    "date": "2026-04-13",
+    "slot": "reminder",
+    "file": "2026-04-13_reminder.mp4"
+  },
+  {
+    "date": "2026-04-13",
+    "slot": "warmup",
+    "file": "2026-04-13_warmup.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "deviz",
+    "file": "2026-04-14_deviz.mp4"
+  },
+  {
+    "date": "2026-04-15",
+    "slot": "deviz",
+    "file": "2026-04-15_deviz.mp4"
+  },
+  {
+    "date": "2026-04-16",
+    "slot": "deviz",
+    "file": "2026-04-16_deviz.mp4"
+  },
+  {
+    "date": "2026-04-17",
+    "slot": "deviz",
+    "file": "2026-04-17_deviz.mp4"
+  },
+  {
+    "date": "2026-04-18",
+    "slot": "deviz",
+    "file": "2026-04-18_deviz.mp4"
   }
 ]
