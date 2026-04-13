@@ -628,8 +628,78 @@
   },
   {
     "date": "2026-04-14",
+    "slot": "announce",
+    "file": "2026-04-14_announce.mp4"
+  },
+  {
+    "date": "2026-04-14",
     "slot": "deviz",
     "file": "2026-04-14_deviz.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "evening_1",
+    "file": "2026-04-14_evening_1.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "evening_2",
+    "file": "2026-04-14_evening_2.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "evening_3",
+    "file": "2026-04-14_evening_3.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "evening_4",
+    "file": "2026-04-14_evening_4.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "fb_announce",
+    "file": "2026-04-14_fb_announce.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "fb_remind",
+    "file": "2026-04-14_fb_remind.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "fb_warmup",
+    "file": "2026-04-14_fb_warmup.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "morning_1",
+    "file": "2026-04-14_morning_1.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "morning_2",
+    "file": "2026-04-14_morning_2.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "morning_3",
+    "file": "2026-04-14_morning_3.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "morning_4",
+    "file": "2026-04-14_morning_4.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "reminder",
+    "file": "2026-04-14_reminder.mp4"
+  },
+  {
+    "date": "2026-04-14",
+    "slot": "warmup",
+    "file": "2026-04-14_warmup.mp4"
   },
   {
     "date": "2026-04-15",
