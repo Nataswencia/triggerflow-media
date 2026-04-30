@@ -745,5 +745,16 @@
     "date": "2026-04-24",
     "slot": "deviz",
     "file": "2026-04-24_deviz.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-04-30",
+    "slot": "deviz",
+    "file": "2026-04-30_deviz.mp4"
   }
 ]
