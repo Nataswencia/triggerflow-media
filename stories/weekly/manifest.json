@@ -4001,5 +4001,104 @@
     "date": "2026-06-09",
     "slot": "evening_4",
     "file": "2026-06-09_evening_4.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-10",
+    "slot": "deviz",
+    "file": "2026-06-10_deviz.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-10",
+    "slot": "morning_1",
+    "file": "2026-06-10_morning_1.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-10",
+    "slot": "morning_2",
+    "file": "2026-06-10_morning_2.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-10",
+    "slot": "morning_3",
+    "file": "2026-06-10_morning_3.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-10",
+    "slot": "morning_4",
+    "file": "2026-06-10_morning_4.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-10",
+    "slot": "evening_1",
+    "file": "2026-06-10_evening_1.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-10",
+    "slot": "evening_2",
+    "file": "2026-06-10_evening_2.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-10",
+    "slot": "evening_3",
+    "file": "2026-06-10_evening_3.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-10",
+    "slot": "evening_4",
+    "file": "2026-06-10_evening_4.mp4"
   }
 ]
