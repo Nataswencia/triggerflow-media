@@ -4298,5 +4298,60 @@
     "date": "2026-06-13",
     "slot": "evening_4",
     "file": "2026-06-13_evening_4.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-14",
+    "slot": "deviz",
+    "file": "2026-06-14_deviz.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-14",
+    "slot": "morning_1",
+    "file": "2026-06-14_morning_1.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-14",
+    "slot": "morning_2",
+    "file": "2026-06-14_morning_2.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-14",
+    "slot": "morning_3",
+    "file": "2026-06-14_morning_3.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-06-14",
+    "slot": "morning_4",
+    "file": "2026-06-14_morning_4.mp4"
   }
 ]
