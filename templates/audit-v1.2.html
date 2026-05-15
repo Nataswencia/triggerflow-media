@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!--
+============================================================
+AUDIT TEMPLATE VERSION: v1.2
+STATUS: PRODUCTION
+LAST UPDATED: 2026-05-15
+SSOT: TRUE
+CANONICAL URL: https://nataswencia.github.io/triggerflow-media/templates/audit-v1.2.html
+============================================================
+This file is THE ONLY allowed visual source for site-audit PDFs.
+Any renderer (n8n production, local Claude, manual, future APIs)
+MUST fetch from the canonical URL above. Inline copies are
+prohibited (see rules/site-audit/protocol.md §12.1).
+============================================================
+-->
+<html lang="{{LANG|ru}}" data-ssot-template="audit-v1.2" data-template-status="production">
+<head>
+<meta charset="UTF-8">
+<meta name="audit-template-version" content="v1.2">
+<meta name="audit-template-status" content="production">
+<meta name="audit-template-ssot" content="true">
+<title>{{T_TITLE_DOC}} {{WEBSITE_URL}} - TriggerFlow</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+/* ============================================================ */
+/* === PRODUCTION TYPOGRAPHY RULES (do not override in nodes) === */
+/* - Inter font, navy #1B2D4F, white bg, 14px/1.75 body          */
+/* - No em-dash (—) — content-layer rule, enforced in adapter    */
+/* - No trailing periods in <p>/<li> — content-layer rule        */
+/* ============================================================ */
+body { font-family:'Inter',-apple-system,sans-serif; background:#ffffff; color:#1B2D4F; font-size:14px; line-height:1.75; }
+p, li { widows:3; orphans:3; }
+strong { color:#1B2D4F; }
+
+/* COVER */
+.cover {
+ min-height:100vh; background:#1B2D4F;
+ display:flex; flex-direction:column; justify-content:space-between;
+ padding:60px 64px; position:relative; overflow:hidden; page-break-after:always;
+}
+.cover-accent-1 { position:absolute; top:-120px; right:-120px; width:480px; height:480px; border-radius:50%; background:radial-gradient(circle,rgba(30,111,255,.25) 0%,transparent 65%); }
+.cover-accent-2 { position:absolute; bottom:-80px; left:40%; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(255,106,0,.12) 0%,transparent 65%); }
+.cover-top,.cover-bottom,.cover-center { position:relative; z-index:2; }
+.brand { display:flex; align-items:center; gap:12px; }
+.brand-logo { width:40px; height:40px; border-radius:9px; overflow:hidden; background:#fff; display:flex; align-items:center; justify-content:center; }
+.brand-logo img { width:100%; height:100%; object-fit:contain; padding:3px; }
+.brand-name { font-size:17px; font-weight:700; color:#fff; }
+.cover-center { flex:1; display:flex; flex-direction:column; justify-content:center; padding:60px 0 40px; }
+.cover-tag { display:inline-block; background:rgba(30,111,255,.2); border:1px solid rgba(30,111,255,.4); color:#7eb3ff; font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; padding:6px 16px; border-radius:20px; margin-bottom:32px; width:fit-content; }
+.cover h1 { font-size:56px; font-weight:800; line-height:1.08; letter-spacing:-.03em; color:#fff; margin-bottom:14px; }
+.cover-domain { font-size:22px; color:rgba(255,255,255,.4); margin-bottom:40px; }
+.cover-desc { font-size:15px; color:rgba(255,255,255,.6); max-width:560px; line-height:1.75; }
+.cover-meta { display:flex; border:1px solid rgba(255,255,255,.1); border-radius:12px; overflow:hidden; background:rgba(255,255,255,.04); width:fit-content; }
+.cover-meta-item { padding:18px 28px; border-right:1px solid rgba(255,255,255,.08); }
+.cover-meta-item:last-child { border-right:none; }
+.cover-meta-label { font-size:10px; color:rgba(255,255,255,.35); text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px; }
+.cover-meta-value { font-size:13px; font-weight:600; color:rgba(255,255,255,.85); }
+
+/* CONTENT */
+.content { padding:64px 64px 56px; }
+.section { margin-bottom:60px; }
+.section.page-break { padding-top:32px; }
+.section-header { display:flex; align-items:baseline; gap:16px; margin-bottom:26px; }
+.section-num { font-size:11px; font-weight:700; color:#1e6fff; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; padding-top:3px; }
+.section h2 { font-size:26px; font-weight:800; color:#1B2D4F; letter-spacing:-.02em; line-height:1.25; }
+.section-sub { font-size:13px; color:#94a3b8; margin-top:8px; margin-bottom:0; font-style:italic; line-height:1.55; }
+.section-divider { height:2px; background:linear-gradient(90deg,#1e6fff 0%,rgba(30,111,255,.08) 60%,transparent 100%); margin-bottom:32px; border-radius:2px; }
+
+/* VERDICT */
+.verdict { display:inline-flex; align-items:center; gap:8px; padding:8px 18px; border-radius:8px; font-size:12px; font-weight:700; margin-bottom:24px; letter-spacing:.02em; }
+.verdict::before { content:''; width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.verdict.fail { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; }
+.verdict.fail::before { background:#dc2626; }
+.verdict.warn { background:#fffbeb; color:#d97706; border:1px solid #fde68a; }
+.verdict.warn::before { background:#d97706; }
+.verdict.ok { background:#f0fdf4; color:#16a34a; border:1px solid #bbf7d0; }
+.verdict.ok::before { background:#16a34a; }
+
+/* ============================================================ */
+/* === WIDOW/ORPHAN PREVENTION (page-break protection)        === */
+/* Cards, highlights, quotes, strategy and conclusion blocks   */
+/* MUST NOT be split between pages. Headings stick to body.    */
+/* ============================================================ */
+.card, .highlight, .highlight-orange, .quote,
+.strategy-card, .case-template, .cialdini-item,
+.usp-before, .usp-after, .author-block, .conclusion {
+  page-break-inside: avoid;
+  break-inside: avoid-page;
+}
+.section-header, h2, h3 {
+  page-break-after: avoid;
+  break-after: avoid-page;
+}
+
+/* CARDS */
+.card { background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:24px 28px; margin-bottom:16px; }
+.card-title { font-size:13px; font-weight:700; color:#1B2D4F; margin-bottom:14px; display:flex; align-items:center; gap:10px; letter-spacing:.01em; }
+.card-title .dot { width:8px; height:8px; border-radius:50%; background:#1e6fff; flex-shrink:0; }
+.card p,.card li { color:#475569; font-size:13.5px; line-height:1.8; }
+.card ul { padding-left:20px; }
+.card li { margin-bottom:6px; }
+.card li:last-child { margin-bottom:0; }
+
+/* HIGHLIGHTS */
+.highlight { background:#EFF6FF; border-left:3px solid #1e6fff; border-radius:0 10px 10px 0; padding:22px 26px; margin:22px 0; }
+.highlight p { color:#1e40af; font-size:14px; line-height:1.8; }
+.highlight-orange { background:#FFF7ED; border-left:3px solid #ff6a00; border-radius:0 10px 10px 0; padding:22px 26px; margin:22px 0; }
+.highlight-orange p { color:#92400e; font-size:14px; line-height:1.8; }
+.highlight-orange strong { color:#c2410c; }
+
+/* QUOTE */
+.quote { background:#FFF7ED; border:1px solid #fed7aa; border-radius:12px; padding:26px 30px; margin:22px 0; }
+.quote-label { font-size:10px; color:#ea580c; font-weight:700; text-transform:uppercase; letter-spacing:.12em; margin-bottom:14px; }
+.quote p { font-size:15px; font-weight:600; color:#7c2d12; line-height:1.75; font-style:italic; }
+
+/* TABLE */
+table { width:100%; border-collapse:collapse; margin:22px 0; font-size:13px; }
+th { background:#F1F5F9; color:#64748b; font-weight:600; text-align:left; padding:14px 16px; font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+td { padding:13px 16px; border-bottom:1px solid #F1F5F9; color:#475569; vertical-align:top; line-height:1.65; }
+tr:last-child td { border-bottom:none; }
+.tag-red { color:#dc2626; font-weight:600; }
+.tag-orange { color:#d97706; font-weight:600; }
+.tag-yellow { color:#ca8a04; font-weight:600; }
+.tag-green { color:#16a34a; font-weight:600; }
+.arrow { color:#1e6fff; padding:0 6px; }
+
+/* USP GRID */
+.usp-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:22px 0; }
+.usp-before { background:#FEF2F2; border:1px solid #FECACA; border-radius:12px; padding:22px 24px; }
+.usp-after { background:#F0FDF4; border:1px solid #BBF7D0; border-radius:12px; padding:22px 24px; }
+.usp-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.12em; margin-bottom:12px; }
+.usp-before .usp-label { color:#dc2626; }
+.usp-after .usp-label { color:#16a34a; }
+.usp-before p,.usp-after p { color:#475569; font-size:13.5px; line-height:1.75; }
+
+/* CIALDINI */
+.cialdini-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:22px 0; }
+.cialdini-item { background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:20px; }
+.cialdini-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+.cialdini-name { font-size:13px; font-weight:700; color:#1B2D4F; }
+.cialdini-score { font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; }
+.score-low { background:#FEF2F2; color:#dc2626; }
+.score-zero { background:#F1F5F9; color:#94a3b8; }
+.score-mid { background:#FFFBEB; color:#d97706; }
+.score-high { background:#F0FDF4; color:#16a34a; }
+.cialdini-item p { color:#64748b; font-size:12px; line-height:1.65; }
+
+/* STRATEGY */
+.strategy-card { background:#EFF6FF; border:1px solid #BFDBFE; border-radius:14px; padding:32px 34px; margin:22px 0; }
+.strategy-card h3 { font-size:19px; font-weight:800; color:#1e40af; margin-bottom:14px; line-height:1.35; }
+.strategy-card p { color:#3730a3; font-size:14px; line-height:1.85; margin-bottom:12px; }
+.strategy-card p:last-child { margin-bottom:0; }
+.case-template { background:#1B2D4F; border-radius:10px; padding:22px 26px; font-size:13px; color:#94a3b8; line-height:2.1; margin:18px 0; }
+.case-template .key { color:#4d94ff; font-weight:600; }
+.case-template .val { color:#e2e8f0; }
+
+/* PRIORITY */
+.p-dot { width:9px; height:9px; border-radius:50%; display:inline-block; margin-right:6px; vertical-align:middle; }
+.p-red { background:#dc2626; }
+.p-orange { background:#f97316; }
+.p-yellow { background:#ca8a04; }
+.p-green { background:#16a34a; }
+
+/* ============================================================ */
+/* === FINAL PAGE SPACING                                     === */
+/* Conclusion + author block should breathe at end of document */
+/* with extra top margin to avoid cramped final page.          */
+/* ============================================================ */
+.conclusion { background:linear-gradient(135deg,#1B2D4F 0%,#1e3a6e 100%); border-radius:16px; padding:38px 42px; margin:56px 0 36px; page-break-inside:avoid; break-inside:avoid-page; page-break-before:auto; }
+.conclusion h3 { font-size:13px; font-weight:700; color:#7eb3ff; text-transform:uppercase; letter-spacing:.12em; margin-bottom:16px; }
+.conclusion p { font-size:16px; font-weight:500; color:#e2e8f0; line-height:1.85; font-style:italic; }
+
+/* ============================================================ */
+/* === MULTILINGUAL UI                                        === */
+/* All UI strings come from {{T_*}} placeholders resolved by   */
+/* the renderer adapter from I18N[lang]. No hardcoded RU/FR/EN */
+/* in this template. Content (authored audit text) stays in    */
+/* site language and is injected via {{SECTION_NN_*}}.         */
+/* ============================================================ */
+
+/* AUTHOR */
+.author-block { display:flex; align-items:center; gap:24px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:14px; padding:26px 30px; margin-bottom:30px; page-break-inside:avoid; }
+.author-photo-wrap { flex-shrink:0; width:84px; height:84px; border-radius:50%; overflow:hidden; border:3px solid #1e6fff; }
+.author-photo-wrap img { width:100%; height:100%; object-fit:cover; object-position:50% 10%; display:block; }
+.author-name { font-size:17px; font-weight:700; color:#1B2D4F; margin-bottom:6px; }
+.author-title { font-size:13px; color:#1e6fff; margin-bottom:8px; font-weight:500; line-height:1.5; }
+.author-note { font-size:12px; color:#94a3b8; line-height:1.6; }
+
+/* FOOTER */
+.footer { display:flex; justify-content:space-between; align-items:center; padding-top:22px; border-top:1px solid #E2E8F0; }
+.footer-brand { font-size:13px; font-weight:700; color:#1e6fff; }
+.footer-info { font-size:12px; color:#94a3b8; }
+
+.page-break { page-break-before:always; }
+h3 { font-size:15px; font-weight:700; color:#1B2D4F; margin-bottom:10px; }
+p { margin-bottom:10px; }
+strong { color:#1B2D4F; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SiteMoney Scan PRO — TriggerFlow 3.0                          -->
+<!-- Template v1.1 (15.05.2026) — i18n layer + spacing polish      -->
+<!-- Changelog v1.0 → v1.1:                                         -->
+<!--   + i18n: все UI strings через {{T_*}} плейсхолдеры            -->
+<!--   + spacing polish: section padding, card spacing, rhythm      -->
+<!--   + line-height bump: 1.7→1.8 в карточках, 1.65 в td           -->
+<!-- ============================================================ -->
+
+<!-- COVER -->
+<div class="cover">
+ <div class="cover-accent-1"></div>
+ <div class="cover-accent-2"></div>
+ <div class="cover-top">
+  <div class="brand">
+   <div class="brand-logo"><img src="data:image/png;base64,{{LOGO_BASE64}}" alt="TriggerFlow"></div>
+   <div class="brand-name">TriggerFlow</div>
+  </div>
+ </div>
+ <div class="cover-center">
+  <div class="cover-tag">{{COVER_TAG|{{T_COVER_TAG_DEFAULT}} · {{AUDIT_DATE}}}}</div>
+  <h1>{{COVER_TITLE|{{T_COVER_TITLE_DEFAULT}}}}</h1>
+  <div class="cover-domain">{{WEBSITE_URL}}</div>
+  <p class="cover-desc">{{COVER_DESCRIPTION}}</p>
+ </div>
+ <div class="cover-bottom">
+  <div class="cover-meta">
+   <div class="cover-meta-item"><div class="cover-meta-label">{{T_LABEL_CLIENT}}</div><div class="cover-meta-value">{{CLIENT_NAME}}</div></div>
+   <div class="cover-meta-item"><div class="cover-meta-label">{{T_LABEL_NICHE}}</div><div class="cover-meta-value">{{NICHE}}</div></div>
+   <div class="cover-meta-item"><div class="cover-meta-label">{{T_LABEL_DATE}}</div><div class="cover-meta-value">{{AUDIT_DATE}}</div></div>
+   <div class="cover-meta-item"><div class="cover-meta-label">{{T_LABEL_SCORE}}</div><div class="cover-meta-value">{{TOTAL_SCORE}} / 105</div></div>
+  </div>
+ </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<!-- SECTION 01: Above-The-Fold -->
+<div class="section">
+ <div class="section-header"><span class="section-num">01</span><div><h2>{{T_S01_TITLE}}</h2><div class="section-sub">{{SECTION_01_SUB|{{T_S01_SUB}}}}</div></div></div>
+ <div class="section-divider"></div>
+ <div class="verdict {{SECTION_01_VERDICT_CLASS|warn}}">{{SECTION_01_VERDICT_TEXT}}</div>
+ <div class="card">
+  <div class="card-title"><span class="dot"></span>{{SECTION_01_CARD_TITLE|{{T_S01_CARD_CURRENT}}}}</div>
+  <ul>
+   {{SECTION_01_CURRENT_LIST}}
+  </ul>
+ </div>
+ <div class="highlight">
+  <p>{{SECTION_01_INSIGHT}}</p>
+ </div>
+ <div class="card">
+  <div class="card-title"><span class="dot" style="background:#dc2626"></span>{{SECTION_01_RECOMMENDATIONS_TITLE|{{T_S01_CARD_RECO}}}}</div>
+  <ul>
+   {{SECTION_01_RECOMMENDATIONS_LIST}}
+  </ul>
+ </div>
+</div>
+
+<!-- SECTION 02: USP -->
+<div class="section page-break">
+ <div class="section-header"><span class="section-num">02</span><div><h2>{{T_S02_TITLE}}</h2><div class="section-sub">{{SECTION_02_SUB|{{T_S02_SUB}}}}</div></div></div>
+ <div class="section-divider"></div>
+ <div class="verdict {{SECTION_02_VERDICT_CLASS|fail}}">{{SECTION_02_VERDICT_TEXT}}</div>
+ <div class="usp-grid">
+  <div class="usp-before"><div class="usp-label">{{T_S02_LABEL_BEFORE}}</div><p>{{SECTION_02_BEFORE}}</p></div>
+  <div class="usp-after"><div class="usp-label">{{T_S02_LABEL_AFTER}}</div><p>{{SECTION_02_AFTER}}</p></div>
+ </div>
+ <div class="card">
+  <div class="card-title"><span class="dot" style="background:#16a34a"></span>{{SECTION_02_STRENGTHS_TITLE|{{T_S02_CARD_STRENGTHS}}}}</div>
+  <ul>
+   {{SECTION_02_STRENGTHS_LIST}}
+  </ul>
+ </div>
+ <div class="highlight-orange"><p>{{SECTION_02_INSIGHT}}</p></div>
+</div>
+
+<!-- SECTION 03: Trust -->
+<div class="section page-break">
+ <div class="section-header"><span class="section-num">03</span><div><h2>{{T_S03_TITLE}}</h2><div class="section-sub">{{SECTION_03_SUB|{{T_S03_SUB}}}}</div></div></div>
+ <div class="section-divider"></div>
+ <div class="verdict {{SECTION_03_VERDICT_CLASS|warn}}">{{SECTION_03_VERDICT_TEXT}}</div>
+ <table>
+  <thead><tr><th>{{T_S03_COL_ELEM}}</th><th>{{T_S03_COL_PRES}}</th><th>{{T_S03_COL_QUAL}}</th></tr></thead>
+  <tbody>
+   {{SECTION_03_TRUST_ROWS}}
+  </tbody>
+ </table>
+ <div class="highlight-orange"><p>{{SECTION_03_INSIGHT}}</p></div>
+</div>
+
+<!-- SECTION 04: Features vs Benefits -->
+<div class="section page-break">
+ <div class="section-header"><span class="section-num">04</span><div><h2>{{T_S04_TITLE}}</h2><div class="section-sub">{{SECTION_04_SUB|{{T_S04_SUB}}}}</div></div></div>
+ <div class="section-divider"></div>
+ <div class="verdict {{SECTION_04_VERDICT_CLASS|fail}}">{{SECTION_04_VERDICT_TEXT}}</div>
+ <div class="card">
+  <div class="card-title"><span class="dot" style="background:#dc2626"></span>{{SECTION_04_CURRENT_TITLE|{{T_S04_CARD_CURRENT}}}}</div>
+  <ul>
+   {{SECTION_04_CURRENT_LIST}}
+  </ul>
+ </div>
+ <table>
+  <thead><tr><th>{{T_S04_COL_FEAT}}</th><th style="width:30px;text-align:center"></th><th>{{T_S04_COL_BENE}}</th></tr></thead>
+  <tbody>
+   {{SECTION_04_FEATURES_BENEFITS_ROWS}}
+  </tbody>
+ </table>
+ <div class="quote"><div class="quote-label">{{SECTION_04_QUOTE_LABEL|{{T_S04_QUOTE_LABEL}}}}</div><p>{{SECTION_04_QUOTE_TEXT}}</p></div>
+</div>
+
+<!-- SECTION 05: Persuasion Matrix (Cialdini) -->
+<div class="section page-break">
+ <div class="section-header"><span class="section-num">05</span><div><h2>{{T_S05_TITLE}}</h2><div class="section-sub">{{SECTION_05_SUB|{{T_S05_SUB}}}}</div></div></div>
+ <div class="section-divider"></div>
+ <div class="verdict {{SECTION_05_VERDICT_CLASS|fail}}">{{SECTION_05_VERDICT_TEXT}}</div>
+ <div class="cialdini-grid">
+  <div class="cialdini-item"><div class="cialdini-header"><span class="cialdini-name">{{T_S05_SOCIAL}}</span><span class="cialdini-score {{SECTION_05_SOCIAL_PROOF_CLASS|score-low}}">{{SECTION_05_SOCIAL_PROOF_SCORE}}/10</span></div><p>{{SECTION_05_SOCIAL_PROOF_TEXT}}</p></div>
+  <div class="cialdini-item"><div class="cialdini-header"><span class="cialdini-name">{{T_S05_AUTH}}</span><span class="cialdini-score {{SECTION_05_AUTHORITY_CLASS|score-low}}">{{SECTION_05_AUTHORITY_SCORE}}/10</span></div><p>{{SECTION_05_AUTHORITY_TEXT}}</p></div>
+  <div class="cialdini-item"><div class="cialdini-header"><span class="cialdini-name">{{T_S05_SCARCITY}}</span><span class="cialdini-score {{SECTION_05_SCARCITY_CLASS|score-zero}}">{{SECTION_05_SCARCITY_SCORE}}/10</span></div><p>{{SECTION_05_SCARCITY_TEXT}}</p></div>
+  <div class="cialdini-item"><div class="cialdini-header"><span class="cialdini-name">{{T_S05_LIKING}}</span><span class="cialdini-score {{SECTION_05_LIKING_CLASS|score-zero}}">{{SECTION_05_LIKING_SCORE}}/10</span></div><p>{{SECTION_05_LIKING_TEXT}}</p></div>
+  <div class="cialdini-item"><div class="cialdini-header"><span class="cialdini-name">{{T_S05_RECIP}}</span><span class="cialdini-score {{SECTION_05_RECIPROCITY_CLASS|score-zero}}">{{SECTION_05_RECIPROCITY_SCORE}}/10</span></div><p>{{SECTION_05_RECIPROCITY_TEXT}}</p></div>
+  <div class="cialdini-item"><div class="cialdini-header"><span class="cialdini-name">{{T_S05_COMMIT}}</span><span class="cialdini-score {{SECTION_05_COMMITMENT_CLASS|score-zero}}">{{SECTION_05_COMMITMENT_SCORE}}/10</span></div><p>{{SECTION_05_COMMITMENT_TEXT}}</p></div>
+ </div>
+</div>
+
+<!-- SECTION 06: Friction -->
+<div class="section page-break">
+ <div class="section-header"><span class="section-num">06</span><div><h2>{{T_S06_TITLE}}</h2><div class="section-sub">{{SECTION_06_SUB|{{T_S06_SUB}}}}</div></div></div>
+ <div class="section-divider"></div>
+ <div class="verdict {{SECTION_06_VERDICT_CLASS|fail}}">{{SECTION_06_VERDICT_TEXT}}</div>
+ {{SECTION_06_BARRIERS_CARDS}}
+</div>
+
+<!-- SECTION 07: Strategic Idea -->
+<div class="section page-break">
+ <div class="section-header"><span class="section-num">07</span><div><h2>{{T_S07_TITLE}}</h2><div class="section-sub">{{SECTION_07_SUB|{{T_S07_SUB}}}}</div></div></div>
+ <div class="section-divider"></div>
+ <div class="strategy-card">
+  <h3>{{SECTION_07_STRATEGY_TITLE|{{T_S07_STRATEGY_TITLE}}}}</h3>
+  <p>{{SECTION_07_STRATEGY_TEXT}}</p>
+ </div>
+ {{SECTION_07_CASE_TEMPLATE_OPTIONAL}}
+ <div class="card">
+  <div class="card-title"><span class="dot" style="background:#16a34a"></span>{{SECTION_07_WHY_TITLE|{{T_S07_CARD_WHY}}}}</div>
+  <ul>
+   {{SECTION_07_WHY_LIST}}
+  </ul>
+ </div>
+</div>
+
+<!-- ИТОГ: Таблица приоритетов -->
+<div class="section page-break">
+ <div class="section-header"><span class="section-num">{{T_TOTAL_NUM_LABEL}}</span><div><h2>{{T_PRIORITIES_TITLE}}</h2><div class="section-sub">{{T_PRIORITIES_SUB}}</div></div></div>
+ <div class="section-divider"></div>
+ <table>
+  <thead><tr><th>{{T_PRIORITIES_COL_NUM}}</th><th>{{T_PRIORITIES_COL_ACTION}}</th><th>{{T_PRIORITIES_COL_PRIO}}</th><th>{{T_PRIORITIES_COL_DIFF}}</th></tr></thead>
+  <tbody>
+   {{PRIORITIES_TABLE_ROWS}}
+  </tbody>
+ </table>
+</div>
+
+<!-- ВЫВОД -->
+<div class="conclusion">
+ <h3>{{T_CONCLUSION_TITLE}}</h3>
+ <p>{{CONCLUSION_TEXT}}</p>
+</div>
+
+<!-- АВТОР -->
+<div class="author-block">
+ <div class="author-photo-wrap">
+  <img src="data:image/jpeg;base64,{{AUTHOR_PHOTO_BASE64}}" alt="{{T_AUTHOR_NAME}}">
+ </div>
+ <div>
+  <div class="author-name">{{T_AUTHOR_NAME}}</div>
+  <div class="author-title">{{T_AUTHOR_TITLE}}</div>
+  <div class="author-note">{{T_AUTHOR_NOTE}}</div>
+ </div>
+</div>
+
+<div class="footer">
+ <div class="footer-brand">{{T_FOOTER_BRAND}}</div>
+ <div class="footer-info">triggerflow.pro · {{AUDIT_DATE}}</div>
+</div>
+
+</div>
+</body>
+</html>
+
+<!--
+============================================================
+ПЛЕЙСХОЛДЕРЫ — справка по заполнению (template v1.1)
+============================================================
+
+КОНТЕНТНЫЕ (обязательные):
+  {{CLIENT_NAME}}             Имя клиента или название компании
+  {{WEBSITE_URL}}             URL сайта (без https://)
+  {{AUDIT_DATE}}              Дата
+  {{NICHE}}                   Ниша/индустрия
+  {{TOTAL_SCORE}}             Итоговый балл (0-105)
+  {{LOGO_BASE64}}             Base64 PNG логотипа TriggerFlow
+  {{AUTHOR_PHOTO_BASE64}}     Base64 JPEG фото Натальи
+
+КОНТЕНТНЫЕ (опциональные тексты с дефолтами):
+  {{LANG}}                    Код языка (ru/fr/en), default: ru
+  {{COVER_TAG}}               Бейдж на обложке
+  {{COVER_TITLE}}             Заголовок обложки
+  {{COVER_DESCRIPTION}}       Описание под URL
+
+I18N — UI strings (резолвятся рендером из I18N[lang]):
+  {{T_TITLE_DOC}}             Заголовок документа (page title)
+  {{T_COVER_TAG_DEFAULT}}     Дефолт бейджа обложки
+  {{T_COVER_TITLE_DEFAULT}}   Дефолт заголовка обложки
+  {{T_LABEL_CLIENT}}          Метка «Клиент»
+  {{T_LABEL_NICHE}}           Метка «Ниша»
+  {{T_LABEL_DATE}}            Метка «Дата»
+  {{T_LABEL_SCORE}}           Метка «Балл»
+  {{T_S01_TITLE}} ... {{T_S07_TITLE}}     Заголовки 7 секций
+  {{T_S01_SUB}} ... {{T_S07_SUB}}         Подзаголовки 7 секций
+  {{T_S01_CARD_CURRENT}}      Заголовок карточки «Что сейчас»
+  {{T_S01_CARD_RECO}}         Заголовок карточки «Что должно быть»
+  {{T_S02_LABEL_BEFORE}}      Метка USP grid «Было»
+  {{T_S02_LABEL_AFTER}}       Метка USP grid «Должно быть»
+  {{T_S02_CARD_STRENGTHS}}    Заголовок карточки сильных сторон
+  {{T_S03_COL_ELEM/PRES/QUAL}} Заголовки колонок таблицы доверия
+  {{T_S04_CARD_CURRENT}}      Заголовок карточки текущего языка
+  {{T_S04_COL_FEAT/BENE}}     Заголовки колонок Features/Benefits
+  {{T_S04_QUOTE_LABEL}}       Метка цитаты (Формула / Règle / Rule)
+  {{T_S05_SOCIAL/AUTH/SCARCITY/LIKING/RECIP/COMMIT}}  Имена принципов Cialdini
+  {{T_S07_STRATEGY_TITLE}}    Дефолт заголовка стратегии
+  {{T_S07_CARD_WHY}}          Заголовок «Почему именно это»
+  {{T_TOTAL_NUM_LABEL}}       Section-num для итога («Итог»/«Bilan»/«Summary»)
+  {{T_PRIORITIES_TITLE}}      Заголовок таблицы приоритетов
+  {{T_PRIORITIES_SUB}}        Подзаголовок таблицы приоритетов
+  {{T_PRIORITIES_COL_*}}      Заголовки колонок таблицы приоритетов
+  {{T_CONCLUSION_TITLE}}      Заголовок блока вывода
+  {{T_AUTHOR_NAME}}           Имя автора (локализованное)
+  {{T_AUTHOR_TITLE}}          Должность автора
+  {{T_AUTHOR_NOTE}}           Подпись под автором
+  {{T_FOOTER_BRAND}}          Бренд в подвале
+
+СЕКЦИИ 01-07 — контент (specific):
+  {{SECTION_NN_VERDICT_CLASS}}  ok / warn / fail
+  {{SECTION_NN_VERDICT_TEXT}}   Текст вердикта
+  {{SECTION_NN_INSIGHT}}        Главный инсайт
+  + per-section: см. inline комментарии
+
+ИТОГ — контент:
+  {{PRIORITIES_TABLE_ROWS}}     Строки таблицы (10 шт), формат:
+                                <tr><td>1</td><td>Текст</td>
+                                <td><span class="p-dot p-red"></span><span class="tag-red">{{T_TAG_CRITICAL}}</span></td>
+                                <td>{{T_DIFF_LOW}}</td></tr>
+  {{CONCLUSION_TEXT}}           Главный вывод (1-2 предложения)
+
+КЛАССЫ ДЛЯ VERDICT:
+  ok    — зелёный (4-5/5)
+  warn  — жёлтый (3/5)
+  fail  — красный (1-2/5)
+
+КЛАССЫ ДЛЯ CIALDINI SCORE:
+  score-zero  — серый (0/10)
+  score-low   — красный (1-3/10)
+  score-mid   — жёлтый (4-6/10)
+  score-high  — зелёный (7-10/10)
+
+КЛАССЫ ДЛЯ ПРИОРИТЕТОВ:
+  p-red + tag-red       — Критично (1-3 пункт)
+  p-orange + tag-orange — Высокий (4-6 пункт)
+  p-yellow + tag-yellow — Средний (7-8 пункт)
+  p-green + tag-green   — Плановый (9-10 пункт)
+
+ИСТОРИЯ:
+  v1.0 — извлечён из c:\tmp\audit-inkost-white-template.html (2026-03)
+  v1.1 — 2026-05-15 — i18n layer + spacing polish (CHANGE REQUEST)
+  v1.2 — 2026-05-15 — SSOT marker + typography enforcement + widow/orphan +
+                       final page spacing + canonical URL declaration
+                       (HARD ENFORCEMENT MIGRATION — Option A)
+============================================================
+-->
