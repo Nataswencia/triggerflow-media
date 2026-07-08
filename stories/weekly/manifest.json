@@ -6047,5 +6047,16 @@
     "date": "2026-07-02",
     "slot": "evening_4",
     "file": "2026-07-02_evening_4.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-07-08",
+    "slot": "deviz",
+    "file": "2026-07-08_deviz.mp4"
   }
 ]
