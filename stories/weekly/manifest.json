@@ -6058,5 +6058,16 @@
     "date": "2026-07-08",
     "slot": "deviz",
     "file": "2026-07-08_deviz.mp4"
+  },
+  {
+    "status": "pending",
+    "attempts": 0,
+    "published_at": null,
+    "processing": false,
+    "processing_at": null,
+    "executed_by": [],
+    "date": "2026-07-10",
+    "slot": "deviz",
+    "file": "2026-07-10_deviz.mp4"
   }
 ]
